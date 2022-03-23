@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'home_page.dart';
+import 'package:flutter_application_1/pages/loginPage.dart';
+// import 'pages';
+import 'pages/home_page.dart';
+// import 'pages/loginpage.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,6 +13,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //naming connventions as for function ftnName() first word's letter is small and other all words letters are capital
+    // buildContext is paramater ..
     // int days = 30;
     // double pi = 3.14; // it can be change because it is not final or const
     // String name = "Moazzam";
@@ -22,8 +26,27 @@ class MyApp extends StatelessWidget {
     //   2,
     //   4
     // ]; // final is modifiable means a list can be modifiable after a while
+    // bringVegetables(thaila: true);  // method
+
     return MaterialApp(
-      home: Homepage(),
+      // home: Homepage(), // i havve removed or comment this route because i use it in below by "/" because it is homepage
+      themeMode: ThemeMode.light,
+      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      darkTheme:
+          ThemeData(brightness: Brightness.light, primarySwatch: Colors.green),
+      initialRoute: "/home",
+      routes: {
+        "/": (context) =>
+            new LoginPage(), //naming connventions as for object NameObject() first word's letter and all words letters are capital
+        "/home": (context) => Homepage(),
+        "/login": (context) => LoginPage(),
+      },
     );
   }
+
+  // bringVegetables({required bool thaila,int rupees=100}) {
+  //   // take bike
+
+  //   // go to mandi
+  // }
 }
