@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/loginPage.dart';
+import 'package:google_fonts/google_fonts.dart';
 // import 'pages';
 import 'pages/home_page.dart';
 // import 'pages/loginpage.dart';
@@ -31,10 +32,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // home: Homepage(), // i havve removed or comment this route because i use it in below by "/" because it is homepage
       themeMode: ThemeMode.light,
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+          fontFamily: GoogleFonts.lato().fontFamily,
+          // primaryTextTheme: GoogleFonts.latoTextTheme()
+          ),
       darkTheme:
           ThemeData(brightness: Brightness.light, primarySwatch: Colors.green),
-      initialRoute: "/home",
+      // initialRoute: "/login",
       routes: {
         "/": (context) =>
             new LoginPage(), //naming connventions as for object NameObject() first word's letter and all words letters are capital
