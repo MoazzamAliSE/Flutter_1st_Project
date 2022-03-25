@@ -38,10 +38,11 @@ class MyApp extends StatelessWidget {
           fontFamily: GoogleFonts.lato().fontFamily,
           // primaryTextTheme: GoogleFonts.latoTextTheme()
           ),
-          // debugShowCheckedModeBanner: false,// this remain good till development
+          debugShowCheckedModeBanner: false,// this remain good till development
       darkTheme:
           ThemeData(brightness: Brightness.light, primarySwatch: Colors.green),
       // initialRoute: "/login",
+      initialRoute: MyRoutes.homeRoute,
       routes: {
         "/": (context) =>
             new LoginPage(), //naming connventions as for object NameObject() first word's letter and all words letters are capital
