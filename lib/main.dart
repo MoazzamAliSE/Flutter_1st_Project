@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/loginPage.dart';
+import 'package:flutter_application_1/utils/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'pages';
 import 'pages/home_page.dart';
@@ -37,14 +38,15 @@ class MyApp extends StatelessWidget {
           fontFamily: GoogleFonts.lato().fontFamily,
           // primaryTextTheme: GoogleFonts.latoTextTheme()
           ),
+          // debugShowCheckedModeBanner: false,// this remain good till development
       darkTheme:
           ThemeData(brightness: Brightness.light, primarySwatch: Colors.green),
       // initialRoute: "/login",
       routes: {
         "/": (context) =>
             new LoginPage(), //naming connventions as for object NameObject() first word's letter and all words letters are capital
-        "/home": (context) => Homepage(),
-        "/login": (context) => LoginPage(),
+        MyRoutes.homeRoute: (context) => Homepage(),
+        MyRoutes.loginRoute: (context) => LoginPage(),
       },
     );
   }
