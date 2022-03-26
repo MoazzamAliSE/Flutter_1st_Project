@@ -25,6 +25,7 @@ class MyDrawer extends StatelessWidget {
                 accountName: Text("Moazzam Ali"),
                 accountEmail: Text("moazzamali0304@gmail.com"),
                 currentAccountPicture:
+                //understand constraints in docs read them
                     //  Image.asset(imageassetrelative), // not working
                     CircleAvatar(
                   backgroundImage: NetworkImage(imageURl),
