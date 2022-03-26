@@ -12,7 +12,13 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       /// Scaffold has a body head and footer
       appBar: AppBar(
-        title: Text("Catalog App"),
+        // backgroundColor: Colors.white,
+        // elevation: 0.0,
+        // iconTheme: IconThemeData(color: Colors.black),
+        title: Text(
+          "Catalog App",
+          // style: TextStyle(color: Colors.black),
+        ),
       ),
 
       body: Center(
