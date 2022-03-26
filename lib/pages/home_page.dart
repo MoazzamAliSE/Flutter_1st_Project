@@ -1,18 +1,47 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_application_1/models/catalog.dart';
 import '../models/catalog.dart';
 import '../widgets/drawer.dart';
 import '../widgets/items_widget.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  final int days = 30;
+  final String name = "Moazzam";
+  @override
+  void initState() {
+    // init method class is initialized and before build it load the data and passed to the widget
+    // TODO: implement initState
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    await Future.delayed(Duration(seconds: 2));
+    final catalogJson = await rootBundle.loadString(
+        "assets/files/catalog.json"); // data reached but we have to decrypt the loaded data
+    final decodedData = jsonDecode(
+        catalogJson); // jsonEncode means map to string     decode means string to map    map key value or any other format
+    var productData = decodedData["products"];
+    CatalogModel.items =
+        List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     // final dummyList = List.generate(50, (index) => CatalogModel.item[0]);
-    final dummyList = List.generate(10, (index) => CatalogModel.item[0]);
-    final int days = 30;
-    final String name = "Moazzam";
+    // final dummyList = List.generate(10, (index) => CatalogModel.items[0]);
+
     return Scaffold(
       /// Scaffold has a body head and footer
       appBar: AppBar(
@@ -56,14 +85,18 @@ class Homepage extends StatelessWidget {
       // ),
       body: Padding(
         padding: const EdgeInsets.all(18.0),
-        child: ListView.builder(
-          itemCount: dummyList.length,
-          itemBuilder: (context, index) {
-            return ItemWidget(
-              item: dummyList[index],
-            );
-          },
-        ),
+        child: (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
+            ? ListView.builder(
+                itemCount: CatalogModel.items!.length,
+                itemBuilder: (context, index) {
+                  return ItemWidget(
+                    item: CatalogModel.items![index],
+                  );
+                },
+              )
+            : const Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
       // Center(
       //   child: Container(
