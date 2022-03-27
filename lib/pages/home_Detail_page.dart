@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/catalog.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeDetailPage extends StatelessWidget {
   const HomeDetailPage({Key? key, required this.catalog})
@@ -74,6 +76,7 @@ class HomeDetailPage extends StatelessWidget {
                               style: TextStyle(
                                 color: context.accentColor,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: GoogleFonts.lato().fontFamily,
                                 fontSize: 12.0,
                               ),
                             ),

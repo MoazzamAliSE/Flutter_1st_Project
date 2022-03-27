@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
       // brightness: Brightness.light, primarySwatch: Colors.green
       // ),
       // initialRoute: "/login",
-      // initialRoute: MyRoutes.homeRoute,
+      initialRoute: MyRoutes.homeRoute,
       routes: {
         "/": (context) =>
             new LoginPage(), //naming connventions as for object NameObject() first word's letter and all words letters are capital
