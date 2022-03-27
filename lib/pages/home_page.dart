@@ -1,10 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/utils/routes.dart';
 
 import 'dart:convert';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter_application_1/models/catalog.dart';
 import '../models/catalog.dart';
+import '../widgets/drawer.dart';
 import '../widgets/home_widgets/Catalog_Header.dart';
 import '../widgets/home_widgets/Catalog_list.dart';
 import '../widgets/themes.dart';
@@ -42,7 +45,14 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+      ),
       backgroundColor: Mytheme.creamColor,
+      floatingActionButton: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+          backgroundColor: Mytheme.darkBluishColor,
+          child: Icon(CupertinoIcons.cart)),
       body: SafeArea(
         child: Container(
           padding: Vx.m32,
@@ -58,6 +68,7 @@ class _HomepageState extends State<Homepage> {
           ),
         ),
       ),
+      drawer: MyDrawer(),
     );
   }
 }
