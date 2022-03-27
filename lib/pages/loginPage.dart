@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/routes.dart';
+import '../widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -30,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: context.canvasColor,
       child: SingleChildScrollView(
         //SingleChildScrollView this is good for removing the bottomOverFlow
         child: Form(
@@ -96,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                     // second is inkWell which show that button is going to pressed and a better visual is places and behaves like a button   splash color ripple effect
                     Material(
                       // inkWell has an ansestor material so there should no decoration is placed in the child it can bring errors
-                      color: Colors.deepPurple,
+                      color: context.theme.buttonColor,
                       borderRadius:
                           BorderRadius.circular(changeButton ? 50 : 8),
                       child: InkWell(

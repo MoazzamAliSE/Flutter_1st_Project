@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:velocity_x/velocity_x.dart';
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
 
@@ -13,7 +13,7 @@ class MyDrawer extends StatelessWidget {
     // final imageassetrelative = "assets\images\IMG_20211130_163357_HDR~2.jpg";
     return Drawer(
       child: Container(
-        color: Colors.deepPurple,
+        color:  context.canvasColor,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -37,33 +37,33 @@ class MyDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(
                 CupertinoIcons.home,
-                color: Colors.white,
+                color: context.theme.accentColor,
               ),
               title: Text(
                 "Home",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: context.theme.accentColor),
                 textScaleFactor: 1.2,
               ),
             ),
             ListTile(
               leading: Icon(
                 CupertinoIcons.profile_circled,
-                color: Colors.white,
+                color: context.theme.accentColor,
               ),
               title: Text(
                 "Profile",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: context.theme.accentColor),
                 textScaleFactor: 1.2,
               ),
             ),
             ListTile(
               leading: Icon(
                 CupertinoIcons.mail,
-                color: Colors.white,
+                color: context.theme.accentColor,
               ),
               title: Text(
                 "Email",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: context.theme.accentColor),
                 textScaleFactor: 1.2,
               ),
             ),
