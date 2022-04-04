@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/cart.dart';
 // import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:vxstate/vxstate.dart';
+// import 'package:vxstate/vxstate.dart';
+import '../core/store.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -25,19 +28,33 @@ class CartPage extends StatelessWidget {
 
 class _CartTotal extends StatelessWidget {
   _CartTotal({Key? key}) : super(key: key);
-  final _cart = CartModel();
+  // final _cart = CartModel();
+
   @override
   Widget build(BuildContext context) {
+    final CartModel _cart = (VxState.store as MyStore).cart;
+    print(" rebuild happened");
+
     return SizedBox(
       height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$${_cart.totalPrice}"
-              .text
-              .xl5
-              .color(context.theme.accentColor)
-              .make(),
+          VxConsumer(
+            //  Notification:{},
+            mutations: {RemoveMutation},
+            notifications: {},
+            builder: (BuildContext context, store, VxStatus? status) {
+              print("remove rebuild happened");
+              {
+                return "\$${_cart.totalPrice}"
+                    .text
+                    .xl5
+                    .color(context.theme.accentColor)
+                    .make();
+              }
+            },
+          ),
           30.widthBox,
           ElevatedButton(
             onPressed: () {
@@ -66,10 +83,14 @@ class _CartListState extends StatelessWidget {
 // }
 
 // class _CartListStateState extends State<_CartListState> {
-  final _cart = CartModel();
+
+  // final _cart = CartModel();
 
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [RemoveMutation]);
+    final CartModel _cart = (VxState.store as MyStore).cart;
+
     return _cart.items.isEmpty
         ? "Notihng to Show".text.xl3.makeCentered()
         : ListView.builder(
@@ -79,7 +100,8 @@ class _CartListState extends StatelessWidget {
               trailing: IconButton(
                 icon: Icon(Icons.remove_circle_outline),
                 onPressed: () {
-                  _cart.remove(_cart.items[index]);
+                  RemoveMutation(_cart.items[index]);
+                  // _cart.remove(_cart.items[index]);
                   // setState(() {});
                 },
               ),
