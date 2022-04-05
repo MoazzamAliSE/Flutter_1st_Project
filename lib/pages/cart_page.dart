@@ -5,6 +5,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:vxstate/vxstate.dart';
 // import 'package:vxstate/vxstate.dart';
 import '../core/store.dart';
+import 'package:pay/pay.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class CartPage extends StatelessWidget {
         title: "Cart".text.color(context.theme.accentColor).xl4.make(),
       ),
       body: Column(children: [
-        _CartListState().p32().expand(),
+        _CartList().p32().expand(),
         Divider(),
         _CartTotal(),
       ]),
@@ -29,11 +30,11 @@ class CartPage extends StatelessWidget {
 class _CartTotal extends StatelessWidget {
   _CartTotal({Key? key}) : super(key: key);
   // final _cart = CartModel();
-
+  final _paymentItems = <PaymentItem>[];
   @override
   Widget build(BuildContext context) {
     final CartModel _cart = (VxState.store as MyStore).cart;
-    print(" rebuild happened");
+    // print(" rebuild happened");
 
     return SizedBox(
       height: 200,
@@ -45,7 +46,7 @@ class _CartTotal extends StatelessWidget {
             mutations: {RemoveMutation},
             notifications: {},
             builder: (BuildContext context, store, VxStatus? status) {
-              print("remove rebuild happened");
+              // print("remove rebuild happened");
               {
                 return "\$${_cart.totalPrice}"
                     .text
@@ -56,35 +57,69 @@ class _CartTotal extends StatelessWidget {
             },
           ),
           30.widthBox,
-          ElevatedButton(
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: "Buying not supported yet".text.make(),
+          Row(
+            children: [
+              ApplePayButton(
+                paymentConfigurationAsset: 'applepay.json',
+                paymentItems: _paymentItems,
+                width: 200,
+                height: 50,
+                style: ApplePayButtonStyle.black,
+                type: ApplePayButtonType.buy,
+                margin: const EdgeInsets.only(top: 15.0),
+                onPaymentResult: (data) {
+                  print(data);
+                },
+                loadingIndicator: const Center(
+                  child: CircularProgressIndicator(),
                 ),
-              );
-            },
-            style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(context.theme.buttonColor)),
-            child: "Buy".text.white.make(),
-          ).w32(context),
+              ),
+              GooglePayButton(
+                paymentConfigurationAsset: 'gpay.json',
+                paymentItems: _paymentItems,
+                width: 200,
+                height: 50,
+                style: GooglePayButtonStyle.black,
+                type: GooglePayButtonType.buy,
+                margin: const EdgeInsets.only(top: 15.0),
+                onPaymentResult: (data) {
+                  print(data);
+                },
+                loadingIndicator: const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+            ],
+          ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     ScaffoldMessenger.of(context).showSnackBar(
+          //       SnackBar(
+          //         content: "Buying not supported yet".text.make(),
+          //       ),
+          //     );
+          //   },
+          //   style: ButtonStyle(
+          //       backgroundColor:
+          //           MaterialStateProperty.all(context.theme.buttonColor)),
+          //   child: "Buy".text.white.make(),
+          // ).w32(context),
         ],
       ),
     );
   }
 }
 
-class _CartListState extends StatelessWidget {
-//   _CartListState({Key? key}) : super(key: key);
+class _CartList extends StatelessWidget {
+//   _CartList({Key? key}) : super(key: key);
 
 //   @override
-//   State<_CartListState> createState() => _CartListStateState();
+//   State<_CartList> createState() => _CartListStateState();
 // }
 
-// class _CartListStateState extends State<_CartListState> {
+// class _CartListStateState extends State<_CartList> {
 
-  // final _cart = CartModel();
+//   final _cart = CartModel();
 
   @override
   Widget build(BuildContext context) {

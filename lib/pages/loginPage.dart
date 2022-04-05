@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/store.dart';
 import 'package:flutter_application_1/utils/routes.dart';
+import 'package:url_launcher/link.dart';
 import '../widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -22,7 +24,11 @@ class _LoginPageState extends State<LoginPage> {
         changeButton = true;
       });
       await Future.delayed(Duration(seconds: 1));
-      await Navigator.pushNamed(context, MyRoutes.homeRoute);
+      // await Navigator.pushNamed(context, MyRoutes.homeRoute);
+      (VxState.store as MyStore)
+          .navigator
+          .routeManager
+          .push(Uri.parse(MyRoutes.homeRoute));
       setState(() {
         changeButton = false;
       });
@@ -51,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Text(
                 "Welcome $name",
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 20.0,
@@ -120,9 +126,10 @@ class _LoginPageState extends State<LoginPage> {
                               : Text(
                                   'login',
                                   style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18),
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
                                 ),
                           // decoration: BoxDecoration(
                           //   color: Colors.deepPurple,
@@ -133,6 +140,9 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
                     // ElevatedButton(
                     //   onPressed: () {
                     //     // print("welldone keep it up");
@@ -141,6 +151,31 @@ class _LoginPageState extends State<LoginPage> {
                     //   child: Text("Login"),
                     //   style: TextButton.styleFrom(minimumSize: Size(120, 45)),
                     // )
+                    TextButton(
+                      onPressed: () {
+                        context.vxNav.push(Uri.parse(MyRoutes.signupRoute));
+                      },
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all(
+                          context.accentColor,
+                        ),
+                      ),
+                      child: Text("Sign Up").text.headline6(context).make(),
+                    ),
+                    Link(
+                        uri: Uri.parse(MyRoutes.cartRoute),
+                        target: LinkTarget.blank,
+                        builder: (context, followLink) {
+                          return TextButton(
+                              onPressed: followLink,
+                              style: ButtonStyle(
+                                  foregroundColor: MaterialStateProperty.all(
+                                      context.accentColor)),
+                              child: Text("Go to CodePur"));
+                        }),
+                    SizedBox(
+                      height: 20,
+                    ),
                   ],
                 ),
               ),

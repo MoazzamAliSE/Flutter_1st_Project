@@ -9,6 +9,7 @@ class CartModel {
   // static final cartModel = CartModel._internal();  // these line are to make cart singleton
   // CartModel._internal();
   // factory CartModel() => cartModel;
+
   //catalog Field
   late CatalogModel _catalog;
 
@@ -29,17 +30,17 @@ class CartModel {
   num get totalPrice =>
       items.fold(0, (total, current) => total + current.price);
 
-  //add items
+//   //add items
 
-  void add(Item item) {
-    _itemIds.add(item.id);
-  }
+//   void add(Item item) {
+//     _itemIds.add(item.id);
+//   }
 
-// remove Item
+// // remove Item
 
-  void remove(Item item) {
-    _itemIds.remove(item.id);
-  }
+//   void remove(Item item) {
+//     _itemIds.remove(item.id);
+//   }
 }
 
 class AddMutation extends VxMutation<MyStore> {
