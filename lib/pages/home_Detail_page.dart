@@ -133,7 +133,7 @@ class HomeDetailPage extends StatelessWidget {
                           ),
                         )
                       ],
-                    ).py64().scrollVertical(),
+                    ).py64(),
                   ),
                 ),
               ),

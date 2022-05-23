@@ -78,7 +78,7 @@ class Item {
       price: price ?? this.price,
       color: color ?? this.color,
       image: image ?? this.image,
-      quantity: quantity ?? this.quantity ?? 1,
+      quantity: quantity,
     );
   }
 
