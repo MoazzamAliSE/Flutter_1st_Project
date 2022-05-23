@@ -6,11 +6,14 @@ import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'pages';
+import 'core/store.dart';
 import 'pages/home_page.dart';
 // import 'pages/loginpage.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(VxState(store: MyStore(),
+  // interceptors: [],
+  child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

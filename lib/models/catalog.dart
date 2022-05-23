@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:flutter_application_1/models/cart.dart';
+// import 'package:flutter_application_1/models/cart.dart';
 
 // 3.19 json
 //import 'package:flutter/material.dart';
 class CatalogModel {
-  static final cataModel = CatalogModel._internal();
-  CatalogModel._internal();
-  factory CatalogModel() => cataModel;
+  // static final cataModel = CatalogModel._internal();
+  // CatalogModel._internal();
+  // factory CatalogModel() => cataModel;
   static List<Item>? items;
 
   // set catalog(CatalogModel catalog) {}
@@ -32,6 +32,8 @@ class CatalogModel {
 
   // Get item by position
   Item getByPosition(int pos) => items![pos];
+
+  toMap() {}
 
   // void add(Item catalog) {}
 }
