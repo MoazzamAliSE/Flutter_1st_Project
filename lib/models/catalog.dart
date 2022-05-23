@@ -1,11 +1,18 @@
 import 'dart:convert';
 
+import 'package:flutter_application_1/models/cart.dart';
+
 // 3.19 json
 //import 'package:flutter/material.dart';
 class CatalogModel {
+  static final cataModel = CatalogModel._internal();
+  CatalogModel._internal();
+  factory CatalogModel() => cataModel;
   static List<Item>? items;
 
-  static expand() {}
+  // set catalog(CatalogModel catalog) {}
+
+  // static expand() {}
   // =[
   //   Item(
   //     id: 1,
@@ -20,11 +27,13 @@ class CatalogModel {
   // ];
 
   // get Item by ID
-   Item getById(int id) =>
-      items!.firstWhere((element) => element.id==id, orElse: null);
+  Item getById(int id) =>
+      items!.firstWhere((element) => element.id == id, orElse: null);
 
   // Get item by position
-   Item getByPosition(int pos) => items![pos];
+  Item getByPosition(int pos) => items![pos];
+
+  // void add(Item catalog) {}
 }
 
 class Item {

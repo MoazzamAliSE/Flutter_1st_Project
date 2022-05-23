@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/cart.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -23,8 +24,8 @@ class CartPage extends StatelessWidget {
 }
 
 class _CartTotal extends StatelessWidget {
-  const _CartTotal({Key? key}) : super(key: key);
-
+  _CartTotal({Key? key}) : super(key: key);
+  final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -32,7 +33,11 @@ class _CartTotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$9999".text.xl5.color(context.theme.accentColor).make(),
+          "\$${_cart.totalPrice}"
+              .text
+              .xl5
+              .color(context.theme.accentColor)
+              .make(),
           30.widthBox,
           ElevatedButton(
             onPressed: () {
@@ -53,21 +58,33 @@ class _CartTotal extends StatelessWidget {
   }
 }
 
-class _CartListState extends StatelessWidget {
-  const _CartListState({Key? key}) : super(key: key);
+class _CartListState extends StatefulWidget {
+  _CartListState({Key? key}) : super(key: key);
+
+  @override
+  State<_CartListState> createState() => _CartListStateState();
+}
+
+class _CartListStateState extends State<_CartListState> {
+  final _cart = CartModel();
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 15,
-      itemBuilder: (BuildContext context, int index) => ListTile(
-        leading: Icon(Icons.done),
-        trailing: IconButton(
-          icon: Icon(Icons.remove_circle_outline),
-          onPressed: () {},
-        ),
-        title: "Item 1".text.make(),
-      ),
-    );
+    return _cart.items.isEmpty
+        ? "Notihng to Show".text.xl3.makeCentered()
+        : ListView.builder(
+            itemCount: _cart.items.length,
+            itemBuilder: (BuildContext context, int index) => ListTile(
+              leading: Icon(Icons.done),
+              trailing: IconButton(
+                icon: Icon(Icons.remove_circle_outline),
+                onPressed: () {
+                  _cart.remove(_cart.items[index]);
+                  setState(() {});
+                },
+              ),
+              title: _cart.items[index].name.text.make(),
+            ),
+          );
   }
 }
