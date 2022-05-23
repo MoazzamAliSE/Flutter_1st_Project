@@ -3,7 +3,7 @@ import 'dart:convert';
 // 3.19 json
 //import 'package:flutter/material.dart';
 class CatalogModel {
-  static  List<Item>? items;
+  static List<Item>? items;
 
   static expand() {}
   // =[
@@ -18,6 +18,13 @@ class CatalogModel {
   //         "https://images.priceoye.pk/apple-iphone-12-pro-max-pakistan-priceoye-swc34-500x500.webp",
   //   )
   // ];
+
+  // get Item by ID
+  static Item getById(int id) =>
+      items!.firstWhere((element) => element.id==id, orElse: null);
+
+  // Get item by position
+  static Item getByPosition(int pos) => items![pos];
 }
 
 class Item {
