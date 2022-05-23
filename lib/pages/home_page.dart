@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_application_1/models/catalog.dart';
+import '../models/catalog.dart';
 import '../widgets/drawer.dart';
+import '../widgets/items_widget.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // final dummyList = List.generate(50, (index) => CatalogModel.item[0]);
+    final dummyList = List.generate(10, (index) => CatalogModel.item[0]);
     final int days = 30;
     final String name = "Moazzam";
     return Scaffold(
@@ -50,14 +54,25 @@ class Homepage extends StatelessWidget {
       //     color: Colors.amber,
       //   ),
       // ),
-      body: Center(
-        child: Container(
-          child: Text(
-            // context.runtimeType.toString(),
-            'Welcome Man you are going to complete flutter before $days March Best of luck $name',
-          ),
+      body: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: ListView.builder(
+          itemCount: dummyList.length,
+          itemBuilder: (context, index) {
+            return ItemWidget(
+              item: dummyList[index],
+            );
+          },
         ),
       ),
+      // Center(
+      //   child: Container(
+      //     child: Text(
+      //       // context.runtimeType.toString(),
+      //       'Welcome Man you are going to complete flutter before $days March Best of luck $name',
+      //     ),
+      //   ),
+      // ),
       drawer: MyDrawer(),
     );
   }
