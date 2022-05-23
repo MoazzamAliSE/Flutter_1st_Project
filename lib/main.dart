@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/cart_page.dart';
 import 'package:flutter_application_1/pages/home_Detail_page.dart';
 import 'package:flutter_application_1/pages/loginPage.dart';
+import 'package:flutter_application_1/pages/signup_page.dart';
 import 'package:flutter_application_1/utils/routes.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -19,7 +20,7 @@ void main() {
   runApp(VxState(
       store: MyStore(),
       // interceptors: [],
-      child: MyApp()));
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -28,8 +29,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var vxNavigator = VxNavigator(routes: {
-      "/": (_, __) => MaterialPage(child: HomePage()),
-      MyRoutes.homeRoute: (_, __) => MaterialPage(child: HomePage()),
+      "/": (_, __) => MaterialPage(child: Homepage()),
+      MyRoutes.homeRoute: (_, __) => MaterialPage(child: Homepage()),
       MyRoutes.homeDetailsRoute: (uri, _) {
         final catalog = (VxState.store as MyStore)
             .catalog
@@ -39,9 +40,9 @@ class MyApp extends StatelessWidget {
           catalog: catalog,
         ));
       },
-      MyRoutes.homeRoute: (_, __) => MaterialPage(child: HomePage()),
+      MyRoutes.homeRoute: (_, __) => MaterialPage(child: Homepage()),
       MyRoutes.loginRoute: (_, __) => MaterialPage(child: LoginPage()),
-      // MyRoutes.signupRoute: (_, __) => MaterialPage(child: SignUpPage()),
+      MyRoutes.signupRoute: (_, __) => MaterialPage(child: SignUpPage()),
       MyRoutes.cartRoute: (_, __) => MaterialPage(child: CartPage()),
     });
     (VxState.store as MyStore).navigator = vxNavigator;
@@ -61,7 +62,7 @@ class MyApp extends StatelessWidget {
     // ]; // final is modifiable means a list can be modifiable after a while
     // bringVegetables(thaila: true);  // method
 
-    return MaterialApp.router(
+    return MaterialApp(
       // home: Homepage(), // i havve removed or comment this route because i use it in below by "/" because it is homepage
       themeMode: ThemeMode.system,
       theme: Mytheme.lightTheme(context),
@@ -81,17 +82,17 @@ class MyApp extends StatelessWidget {
       // ThemeData(
       // brightness: Brightness.light, primarySwatch: Colors.green
       // ),
-      routeInformationParser: VxInformationParser(),
-      routerDelegate: vxNavigator,
-      // initialRoute: "/login",
-      // // initialRoute: MyRoutes.homeRoute,
-      // routes: {
-      //   "/": (context) =>
-      //       new LoginPage(), //naming connventions as for object NameObject() first word's letter and all words letters are capital
-      //   MyRoutes.homeRoute: (context) => Homepage(),
-      //   MyRoutes.loginRoute: (context) => LoginPage(),
-      //   MyRoutes.cartRoute: (context) => CartPage(),
-      //},
+      // routeInformationParser: VxInformationParser(),
+      // routerDelegate: vxNavigator,
+      initialRoute: "/login",
+      // initialRoute: MyRoutes.homeRoute,
+      routes: {
+        "/": (context) =>
+            new LoginPage(), //naming connventions as for object NameObject() first word's letter and all words letters are capital
+        MyRoutes.homeRoute: (context) => Homepage(),
+        MyRoutes.loginRoute: (context) => LoginPage(),
+        MyRoutes.cartRoute: (context) => CartPage(),
+      },
     );
   }
 

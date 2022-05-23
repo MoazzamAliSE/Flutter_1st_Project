@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/cart.dart';
 // import 'package:flutter_application_1/widgets/themes.dart';
@@ -59,21 +60,23 @@ class _CartTotal extends StatelessWidget {
           30.widthBox,
           Row(
             children: [
-              ApplePayButton(
-                paymentConfigurationAsset: 'applepay.json',
-                paymentItems: _paymentItems,
-                width: 200,
-                height: 50,
-                style: ApplePayButtonStyle.black,
-                type: ApplePayButtonType.buy,
-                margin: const EdgeInsets.only(top: 15.0),
-                onPaymentResult: (data) {
-                  print(data);
-                },
-                loadingIndicator: const Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
+              // ApplePayButton(
+              //   paymentConfigurationAsset: 'applepay.json',
+              //   paymentItems: _paymentItems,
+              //   width: 200,
+              //   height: 50,
+              //   style: ApplePayButtonStyle.black,
+              //   type: ApplePayButtonType.buy,
+              //   margin: const EdgeInsets.only(top: 15.0),
+              //   onPaymentResult: (data) {
+              //     if (kDebugMode) {
+              //       print(data);
+              //     }
+              //   },
+              //   loadingIndicator: const Center(
+              //     child: CircularProgressIndicator(),
+              //   ),
+              // ),
               GooglePayButton(
                 paymentConfigurationAsset: 'gpay.json',
                 paymentItems: _paymentItems,
@@ -85,7 +88,7 @@ class _CartTotal extends StatelessWidget {
                 onPaymentResult: (data) {
                   print(data);
                 },
-                loadingIndicator: const Center(
+                loadingIndicator: Center(
                   child: CircularProgressIndicator(),
                 ),
               ),
