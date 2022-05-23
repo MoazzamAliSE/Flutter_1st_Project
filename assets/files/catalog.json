@@ -1,0 +1,84 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "IPhone 12 Pro",
+            "desc": "Apple",
+            "price": 1999,
+            "color": "#33505a",
+            "image": "https://images.priceoye.pk/apple-iphone-12-pro-max-pakistan-priceoye-swc34-500x500.webp"
+        },
+        {
+            "id": 2,
+            "name": "Apple MacBook Air",
+            "desc": "Apple",
+            "price": 1599,
+            "color": "#00ac51",
+            "image": "https://www.czone.com.pk/images/products/macbook-air-space-gray-config-201810-1540-10682-221221020655.jpg"
+        },
+        {
+            "id": 3,
+            "name": "AirPods Pro",
+            "desc": "Apple",
+            "price": 999,
+            "color": "#e0nfae",
+            "image": "https://vmart.pk/wp-content/uploads/2021/10/Apple-AirPods-3rd-generation-3.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Mac mini MGNR3",
+            "desc": "Apple",
+            "price": 1399,
+            "color": "#33505a",
+            "image": "https://appleshop.com.pk/wp-content/uploads/2020/11/mac-mini-3.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Mac",
+            "desc": "Apple",
+            "price": 1999,
+            "color": "#33505a",
+            "image": "https://www.apple.com/newsroom/images/product/mac/standard/Apple_MacBook-Pro_14-16-inch_10182021_big.jpg.slideshow-xlarge_2x.jpg"
+        },
+        {
+            "id": 6,
+            "name": "IPhone 12 Pro",
+            "desc": "Apple",
+            "price": 1999,
+            "color": "#33505a",
+            "image": "https://images.priceoye.pk/apple-iphone-12-pro-max-pakistan-priceoye-swc34-500x500.webp"
+        },
+        {
+            "id": 7,
+            "name": "Apple MacBook Air",
+            "desc": "Apple",
+            "price": 1599,
+            "color": "#00ac51",
+            "image": "https://www.czone.com.pk/images/products/macbook-air-space-gray-config-201810-1540-10682-221221020655.jpg"
+        },
+        {
+            "id": 8,
+            "name": "AirPods Pro",
+            "desc": "Apple",
+            "price": 999,
+            "color": "#e0nfae",
+            "image": "https://vmart.pk/wp-content/uploads/2021/10/Apple-AirPods-3rd-generation-3.jpg"
+        },
+        {
+            "id": 9,
+            "name": "Mac mini MGNR3",
+            "desc": "Apple",
+            "price": 1399,
+            "color": "#33505a",
+            "image": "https://appleshop.com.pk/wp-content/uploads/2020/11/mac-mini-3.jpg"
+        },
+        {
+            "id": 10,
+            "name": "Mac",
+            "desc": "Apple",
+            "price": 1999,
+            "color": "#33505a",
+            "image": "https://www.apple.com/newsroom/images/product/mac/standard/Apple_MacBook-Pro_14-16-inch_10182021_big.jpg.slideshow-xlarge_2x.jpg"
+        }
+    ]
+}

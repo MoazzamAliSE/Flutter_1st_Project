@@ -11,6 +11,7 @@ class ItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.white,
       // shape: StadiumBorder(),
       // elevation: 0.5,
       child: ListTile(
@@ -22,8 +23,8 @@ class ItemWidget extends StatelessWidget {
             item.name,
             textScaleFactor: 1.2,
             style: TextStyle(
-              color: Colors.deepPurple,
-              fontWeight: FontWeight.bold,
+              color: Colors.black,
+              fontWeight: FontWeight.normal,
             ),
           ),
           subtitle: Text(item.desc),
