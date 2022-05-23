@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/cart_page.dart';
 import 'package:flutter_application_1/pages/loginPage.dart';
 import 'package:flutter_application_1/utils/routes.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
@@ -59,6 +60,8 @@ class MyApp extends StatelessWidget {
             new LoginPage(), //naming connventions as for object NameObject() first word's letter and all words letters are capital
         MyRoutes.homeRoute: (context) => Homepage(),
         MyRoutes.loginRoute: (context) => LoginPage(),
+        MyRoutes.cartRoute: (context) => CartPage(),
+
       },
     );
   }
