@@ -7,7 +7,9 @@ class MyStore extends VxStore {
 // for manipulating the models
 
   late CatalogModel catalog;
-  late CartModel cart; 
+  late CartModel cart;
+  late VxNavigator navigator;
+  late List<Item> items;
   MyStore(
       // this.catalog,
       // this.cart,
