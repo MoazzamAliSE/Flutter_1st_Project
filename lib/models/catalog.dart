@@ -4,6 +4,8 @@ import 'dart:convert';
 //import 'package:flutter/material.dart';
 class CatalogModel {
   static  List<Item>? items;
+
+  static expand() {}
   // =[
   //   Item(
   //     id: 1,
