@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       // home: Homepage(), // i havve removed or comment this route because i use it in below by "/" because it is homepage
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       theme: Mytheme.lightTheme(context),
       // ThemeData(
       // primarySwatch: Colors.deepPurple,

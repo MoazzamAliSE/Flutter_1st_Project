@@ -16,7 +16,7 @@ class HomeDetailPage extends StatelessWidget {
       ),
       backgroundColor: Mytheme.creamColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -48,25 +48,31 @@ class HomeDetailPage extends StatelessWidget {
                   arcType: VxArcType.CONVEY,
                   edge: VxEdge.TOP,
                   child: Container(
-                    color: Colors.white,
+                    color: context.cardColor,
                     width: context.screenWidth,
                     child: Column(
                       children: [
                         catalog.name.text.xl4
-                            .color(Mytheme.darkBluishColor)
+                            .color(context.theme.accentColor)
                             .bold
                             .make(),
                         catalog.desc.text.xl.make(),
                         10.heightBox,
-                        const Expanded(
+                        Expanded(
                           child: SingleChildScrollView(
                             scrollDirection: Axis.vertical,
                             child: Text(
                               "GeeksForGeeks : Learn Anything, Anywhere"
                               "\nGeeksForGeeks is a good platform to learn programming."
+                              "\nIt is an educational website."
+                              "GeeksForGeeks : Learn Anything, Anywhere"
+                              "\nGeeksForGeeks is a good platform to learn programming."
+                              "\nIt is an educational website."
+                              "\nGeeksForGeeks : Learn Anything, Anywhere"
+                              "\nGeeksForGeeks is a good platform to learn programming."
                               "\nIt is an educational website.",
                               style: TextStyle(
-                                color: Colors.black,
+                                color: context.accentColor,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12.0,
                               ),
